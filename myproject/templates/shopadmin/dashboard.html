@@ -1,0 +1,239 @@
+
+{% extends 'shopadmin/index.html' %}
+{% block content %}
+
+
+<div class="page-inner">
+  <div
+    class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+  >
+    <div>
+      <h3 class="fw-bold mb-3">Dashboard</h3>
+      <!-- <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6> -->
+    </div>
+    <div class="ms-md-auto py-2 py-md-0">
+      <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>
+      <a href="#" class="btn btn-primary btn-round">Add Customer</a> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-stats card-round">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-icon">
+              <div
+                class="icon-big text-center icon-primary bubble-shadow-small"
+              >
+                <i class="fas fa-users"></i>
+              </div>
+            </div>
+            <div class="col col-stats ms-3 ms-sm-0">
+              <div class="numbers">
+                <p class="card-category">Visitors</p>
+                <h4 class="card-title">{{visitor}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-stats card-round">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-icon">
+              <div
+                class="icon-big text-center icon-info bubble-shadow-small"
+              >
+                <i class="fas fa-user-check"></i>
+              </div>
+            </div>
+            <div class="col col-stats ms-3 ms-sm-0">
+              <div class="numbers">
+                <p class="card-category">Subscribers</p>
+                <h4 class="card-title">{{usrcount}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-stats card-round">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-icon">
+              <div
+                class="icon-big text-center icon-success bubble-shadow-small"
+              >
+                <i class="fas fa-luggage-cart"></i>
+              </div>
+            </div>
+            <div class="col col-stats ms-3 ms-sm-0">
+              <div class="numbers">
+                <p class="card-category">Sales</p>
+                <h4 class="card-title">{{sum}} MMK</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-stats card-round">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-icon">
+              <div
+                class="icon-big text-center icon-secondary bubble-shadow-small"
+              >
+                <i class="far fa-check-circle"></i>
+              </div>
+            </div>
+            <div class="col col-stats ms-3 ms-sm-0">
+              <div class="numbers">
+                <p class="card-category">New Order</p>
+                <h4 class="card-title">{{order}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-round">
+        <div class="card-body">
+          <div class="card-head-row card-tools-still-right">
+            <div class="card-title">Customers</div>
+            <div class="card-tools">
+              <div class="dropdown">
+                <button
+                  class="btn btn-icon btn-clean me-0"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#"
+                    >Something else here</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-list py-4">
+            {% for i in usr %}
+            <div class="item-list">
+              <div class="avatar">
+                <span
+                  class="avatar-title rounded-circle border border-white"
+                  >{{i.id}}</span
+                >
+              </div>
+              <div class="info-user ms-3">
+                <div class="username">{{i.first_name}}</div>
+                <div class="status">{{i.username}}</div>
+              </div>
+              <!-- <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button> -->
+            </div>
+            {% endfor %}
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card card-round">
+        <div class="card-header">
+          <div class="card-head-row card-tools-still-right">
+            <div class="card-title">Order History</div>
+            <div class="card-tools">
+              <div class="dropdown">
+                <button
+                  class="btn btn-icon btn-clean me-0"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#"
+                    >Something else here</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Order ID</th>
+                  <th scope="col" class="text-end">User</th>
+                  <th scope="col" class="text-end">Date & Time</th>
+                  
+                  <th scope="col" class="text-end">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in ord_history %}
+                <tr>
+                  <th scope="row">
+                    
+                    {{i.id}}
+                  </th>
+                  <td class="text-end">{{i.cart.usr}}</td>
+                  <td class="text-end">{{i.created_at}}</td>
+                  <td class="text-end">
+                    {% if i.status == 0 %}
+                    <span class="badge badge-success">New Order</span>
+                    {% else %}
+                    <span class="badge badge-info">Completed</span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

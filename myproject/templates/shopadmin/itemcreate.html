@@ -1,0 +1,103 @@
+
+{% extends 'shopadmin/index.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Form Elements</div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              
+              
+
+
+                <form method="post" enctype="multipart/form-data" action="{% url 'myapp:itemview' %}">
+ 
+                    <!-- Security token -->
+                    {% csrf_token %}
+                 
+                    <!-- Using the formset -->
+                    {{ form.as_p }}
+                     
+                    <input type="submit" value="Submit" class="btn btn-success">
+                </form>
+
+
+
+
+            </div>
+            
+          </div>
+        </div>
+        <!-- <div class="card-action">
+          <button class="btn btn-success">Submit</button>
+          <button class="btn btn-danger">Cancel</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Basic</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            id="basic-datatables"
+            class="display table table-striped table-hover"
+          >
+            <thead>
+              <tr>
+                <th>itemname</th>
+                <th>category</th>
+                <th>price</th>
+                <th>description</th>
+                <th>photo</th>
+                <th>:</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>itemname</th>
+                <th>category</th>
+                <th>price</th>
+                <th>description</th>
+                <th>photo</th>
+                <th>:</th>
+              </tr>
+
+            </tfoot>
+            <tbody>
+              {% for i in itm %}
+              <tr>
+                <td>
+                  <img src="{{i.photo1.url}}" alt="" width="50px" height="50px">
+                  
+                </td>
+                <td>{{i.itemname}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.itemname}}</td>
+                <td>...</td>
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock content %}
